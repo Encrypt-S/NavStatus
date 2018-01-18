@@ -1,10 +1,41 @@
-# Node-docker-debug
+# NavStatus
 
-## Debug service
-1. `yarn debug`
-2. `yarn debug:log`
-3. Open dev tools url `chrome-devtools://`
-4. Open `http://localhost:8080` to hit the route
+Describe what the project is - and uses e.g node, mongo - Matt
 
-## Run Production
-`yarn prod`
+## Development 
+The development of NavStatus is done using docker containers to allow a repeatable environment for the development process
+
+The docker dev env has the following features
+    - Local development with docker volumes
+    - Remote Debugging arability
+    - Auto-reload on file save
+
+### Getting started
+
+
+#### 1. Install Docker
+Please make sure you have [Docker](https://www.docker.com/) installed on your machine. If you do not please download and install it before continuing 
+
+### 2. Clone the repo
+Clone NavStatus
+`git clone https://github.com/NAVCoin/NavStatus`
+
+#### 3. Build and run
+Use docker compose to build and run the required containers to develop NavStatus
+
+`docker-compose -f docker-compose-prod.yml -f docker-compose-dev.yml up --build`
+
+Open: `http://localhost:8080/`
+
+#### 4. Start Coding
+You are done! - Just start coding. When you save the container will auto reload. The debugging port is 5555
+
+
+### Live Debugging.
+Debugging is the heart of any go dev process so we have made it super simple. We suggest you install [NodeJS V8 Inspection Manager](https://chrome.google.com/webstore/detail/nodejs-v8-inspector-manag/gnhhdgbaldcilmgcpfddgdbkhjohddkj)
+
+Once installed, with the project running, click the extention in the browser and enter 'localhost' for the host and `5555` for the port
+
+And again you are done :) you can now set breakpoints, inspect code etc.
+
+Exposed Debugging port: `5555` 
