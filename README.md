@@ -7,7 +7,7 @@ The development of NavStatus is done using docker containers to allow a repeatab
 
 The docker dev env has the following features
 - Local development with docker volumes
-- Auto reload on file save
+- Live reload on file save
 - Remote Debugging
 
 ### Getting started
