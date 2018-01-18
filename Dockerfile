@@ -1,17 +1,19 @@
-FROM node:boron
+FROM node:6.10.2-alpine
 
+RUN apk update && apk upgrade && \
+    apk add --no-cache bash git openssh
+
+RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
+RUN npm install nodemon -g
 
-COPY package.json /usr/src/app
+COPY package.json /usr/src/app/
+RUN yarn
 
-COPY package-lock.json /usr/src/app
+COPY ./src /usr/src/app
 
-RUN npm install
+COPY start-dev.sh /usr/src/app/
 
-RUN npm install pm2 -g
+EXPOSE 8080
 
-COPY . /usr/src/app
-
-EXPOSE 3000
-
-CMD ["node", "app"]
+CMD [ "npm", "start" ]

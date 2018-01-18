@@ -1,15 +1,23 @@
 {
-  "name": "docker-sample",
+  "name": "node-docker-debug",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Develop and debug node.js inside docker container",
+  "main": "./src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "debug": "docker-compose -f docker-compose.prod.yml -f docker-compose.dev.yml up --build -d",
+    "debug:stop": "docker-compose -f docker-compose.prod.yml -f docker-compose.dev.yml down -v",
+    "debug:log": "docker-compose -f docker-compose.prod.yml -f docker-compose.dev.yml logs -f microservice",
+    "prod": "docker-compose -f docker-compose.prod.yml up --buil -d",
+    "prod:stop": "docker-compose -f docker-compose.prod.yml down",
+    "start": "node ./src/index.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "node",
+    "docker"
+  ],
+  "author": "Nazar Matviyiv",
   "license": "ISC",
   "dependencies": {
-    "express-mongo-crud": "^1.3.0"
+    "micro": "^7.0.3"
   }
 }
