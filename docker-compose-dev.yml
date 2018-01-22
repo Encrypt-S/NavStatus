@@ -4,7 +4,6 @@ services:
   microservice:
     command: /bin/bash ./start-dev.sh
     volumes:
-      - ./src:/usr/src/app/src
-      - ./node_modules:/usr/src/app/node_modules
+      - ./:/usr/src/app
     ports:
       - 5555:5555
